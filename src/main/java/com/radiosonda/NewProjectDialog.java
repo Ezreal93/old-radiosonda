@@ -21,7 +21,6 @@ public class NewProjectDialog extends Dialog<Pair<String, String>> {
     private final NewProjectDialogController controller;
 
     public NewProjectDialog() throws IOException {
-        super();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/NewProjectDialog.fxml"));
         controller = new NewProjectDialogController();
         loader.setController(controller);
