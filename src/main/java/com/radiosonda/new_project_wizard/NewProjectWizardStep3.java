@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.radiosonda;
+package com.radiosonda.new_project_wizard;
 
+import com.radiosonda.*;
 import java.io.IOException;
+import java.util.HashMap;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.Dialog;
@@ -16,22 +18,20 @@ import javafx.util.Pair;
  *
  * @author manuel
  */
-public class NewProjectDialog extends Dialog<Pair<String, String>> {
+public class NewProjectWizardStep3 extends Dialog<HashMap<String, String>> {
 
-    private final NewProjectDialogController controller;
+    private final NewProjectWizardStep3Controller controller;
 
-    public NewProjectDialog() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/NewProjectDialog.fxml"));
-        controller = new NewProjectDialogController();
+    public NewProjectWizardStep3() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/NewProjectWizardStep3.fxml"));
+        controller = new NewProjectWizardStep3Controller();
         loader.setController(controller);
         DialogPane pane = loader.load();
 
         this.setDialogPane(pane);
         this.setResultConverter((param) -> {
             if (param.getButtonData() == ButtonBar.ButtonData.OK_DONE) {
-                return new Pair<>(
-                        controller.userProperty().get(),
-                        controller.probeProperty().get());
+                return new HashMap<>();
             } else {
                 return null;
             }

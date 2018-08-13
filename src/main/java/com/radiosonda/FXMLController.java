@@ -1,5 +1,6 @@
 package com.radiosonda;
 
+import com.radiosonda.new_project_wizard.NewProjectWizardFactory;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -20,11 +21,9 @@ public class FXMLController implements Initializable {
 
     @FXML
     void createNewProjectAction(ActionEvent event) throws IOException {
-        Dialog<Pair<String, String>> dialog = new NewProjectDialog();
-     
-        Optional<Pair<String, String>> result = dialog.showAndWait();
-        result.ifPresent((pair)->{
-            System.out.println("User:" + pair.getKey() + ", Probe:" + pair.getValue());
+        Wizard wizard = NewProjectWizardFactory.create();
+        wizard.start().ifPresent((results)->{
+            System.out.println(results);
         });
     }
 
