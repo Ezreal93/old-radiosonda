@@ -11,7 +11,10 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.LineChart;
+import javafx.scene.control.Button;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.TextArea;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -21,13 +24,32 @@ public class FXMLController implements Initializable {
     
     @FXML
     private MenuBar barMenu;
+    
+    @FXML
+    private LineChart<?, ?> temperatureGraph;
+
+    @FXML
+    private LineChart<?, ?> humidityGraph;
+
+    @FXML
+    private TextArea temperatureValue;
+
+    @FXML
+    private TextArea humidityValue;
+
+    @FXML
+    private TextArea pressureValue;
+
+    @FXML
+    private Button finishButton;
       
     @FXML
-    void createNewProjectAction(ActionEvent event) throws IOException {
+    void createNewProjectAction(ActionEvent event) throws IOException {        
         Wizard wizard = NewProjectWizardFactory.create();
         wizard.start().ifPresent((results)->{
             System.out.println(results);
-        });
+            setDisabled(false);
+        });        
     }
     
     @FXML
@@ -36,11 +58,10 @@ public class FXMLController implements Initializable {
         if(currentFile != null){
             System.out.println("File: " + currentFile.getAbsolutePath());
             FileReader fileReader = new FileReader(currentFile);
-            String content = new String(Files.readAllBytes(currentFile.toPath()));            
-        }
-        if(currentFile != null){
+            String content = new String(Files.readAllBytes(currentFile.toPath()));
             setWindowTitle(currentFile.getName());
-        }
+            setDisabled(false);            
+        }            
     }
     
     @FXML
@@ -61,10 +82,20 @@ public class FXMLController implements Initializable {
         Stage stage = (Stage) barMenu.getScene().getWindow();
         stage.setTitle(title);        
     }
+    
+    void setDisabled(boolean state){
+        temperatureGraph.setDisable(state);
+        humidityGraph.setDisable(state);
+        temperatureValue.setDisable(state);
+        humidityValue.setDisable(state);
+        pressureValue.setDisable(state);
+        finishButton.setDisable(state);
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        setDisabled(true);
     }
     
 }

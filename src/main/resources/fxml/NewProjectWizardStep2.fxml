@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<DialogPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="206.0" prefWidth="424.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<DialogPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="206.0" prefWidth="424.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <content>
-      <BorderPane prefHeight="190.0" prefWidth="424.0">
+      <BorderPane prefHeight="186.0" prefWidth="424.0">
          <top>
             <Label contentDisplay="RIGHT" prefHeight="20.0" prefWidth="420.0" text="Paso 1. Verificacion de la comunicacion" textAlignment="CENTER" BorderPane.alignment="TOP_LEFT">
                <font>
