@@ -1,6 +1,8 @@
 package com.radiosonda;
 
+import com.radiosonda.wizard.Wizard;
 import com.radiosonda.new_project_wizard.NewProjectWizardFactory;
+import com.radiosonda.wizard.ContextDialog;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -18,7 +20,7 @@ import javafx.scene.control.TextArea;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-public class FXMLController implements Initializable {
+public class FXMLController extends ContextDialog implements Initializable {
     
     private File currentFile;
     
@@ -45,11 +47,15 @@ public class FXMLController implements Initializable {
       
     @FXML
     void createNewProjectAction(ActionEvent event) throws IOException {        
-        Wizard wizard = NewProjectWizardFactory.create();
-        wizard.start().ifPresent((results)->{
-            System.out.println(results);
+        Wizard wizard = NewProjectWizardFactory.create();       // crea los wizardstep y se los manda a wizard      
+        wizard.start().ifPresent((results)->{                   // muestra uno por uno los wizardstep
+            System.out.println(results);                        // imprime el hashmap 
             setDisabled(false);
-        });        
+        });
+        
+        
+
+       
     }
     
     @FXML

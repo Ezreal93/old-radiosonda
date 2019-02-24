@@ -30,7 +30,7 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </TextArea>
-                  <ComboBox fx:id="portSelector" prefWidth="421.0" promptText="Seleccionar puerto" VBox.vgrow="ALWAYS">
+                  <ComboBox fx:id="portSelector" onAction="#onPortSelected" prefWidth="421.0" promptText="Seleccionar puerto" VBox.vgrow="ALWAYS">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>

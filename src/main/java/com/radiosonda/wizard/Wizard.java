@@ -1,27 +1,26 @@
-package com.radiosonda;
+package com.radiosonda.wizard;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
-import javafx.scene.control.Dialog;
 
 /**
  * @author manuel
  */
-public class Wizard {
-    private final List<Dialog<HashMap<String, String>>> dialogs;
+public class Wizard{
+    private final List<ContextDialog> dialogs;
     private final HashMap<String, String> results;
     
-    public Wizard(List<Dialog<HashMap<String, String>>> dialogs){ 
+    public Wizard(List<ContextDialog> dialogs){ 
         this.dialogs = dialogs;
         this.results = new HashMap<>();        
     }
     
     public Optional<HashMap<String, String>> start(){
-        
-        for(Dialog<HashMap<String, String>> dialog: dialogs){
+        for(ContextDialog dialog: dialogs){            
+            dialog.setContext(results);  
             Optional<HashMap<String, String>> result = dialog.showAndWait();
-            if(result.isPresent()){
+            if(result.isPresent()){                
                 this.results.putAll(result.get());
             }else{
                 return Optional.empty();

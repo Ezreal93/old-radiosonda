@@ -1,16 +1,16 @@
 package com.radiosonda.new_project_wizard;
 
+import com.radiosonda.wizard.ContextDialog;
 import java.io.IOException;
 import java.util.HashMap;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ButtonBar;
-import javafx.scene.control.Dialog;
 import javafx.scene.control.DialogPane;
 
 /**
  * @author manuel
  */
-public class NewProjectWizardStep1 extends Dialog<HashMap<String, String>> {
+public class NewProjectWizardStep1 extends ContextDialog {
 
     private final NewProjectWizardStep1Controller controller;
 
